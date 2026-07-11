@@ -1,0 +1,15 @@
+# Core (required) — the tracker + metrics run on just these.
+numpy>=1.24
+scipy>=1.10          # Hungarian assignment (linear_sum_assignment)
+                     # NOTE: a pure-numpy greedy fallback runs if scipy is absent.
+
+# Required for the REAL MOT17 benchmark (run_real.py) and the run_smoke.py
+# reference cross-check. motmetrics 1.4.0 predates numpy 2.0 and calls the
+# removed np.asfarray; both scripts shim it automatically on modern numpy.
+motmetrics>=1.4.0
+pandas>=1.5          # pulled in by motmetrics; used for the results table
+
+# Optional — real detector (YoloDetector). Pulls torch; NOT needed for the
+# synthetic smoke test or for file-based detections (MOT16 det.txt).
+# ultralytics>=8.0
+# opencv-python>=4.8
