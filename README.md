@@ -13,8 +13,6 @@ Full breakdown, exact commands, and honest framing of every number → [`RESULTS
 
 From-scratch: per-track constant-velocity **Kalman filter**, **IoU + Hungarian** data association, full track lifecycle (birth → confirm → coast → death), and a hand-written **CLEAR MOT / IDF1** evaluator validated against the reference `motmetrics` library.
 
----
-
 ## Quick start
 
 ```bash
