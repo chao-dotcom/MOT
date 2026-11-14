@@ -13,8 +13,6 @@ Full breakdown, exact commands, and honest framing of every number → [`RESULTS
 
 From-scratch: per-track constant-velocity **Kalman filter**, **IoU + Hungarian** data association, full track lifecycle (birth → confirm → coast → death), and a hand-written **CLEAR MOT / IDF1** evaluator validated against the reference `motmetrics` library.
 
-> Author: Chao Hsuan Ho — edge-AI / perception portfolio artifact.
-
 ---
 
 ## Quick start
@@ -49,6 +47,3 @@ tests/      dependency-free self-tests
 - **Association** — IoU cost matrix + `scipy.optimize.linear_sum_assignment` (greedy fallback if scipy is absent), gated by an IoU threshold.
 - **Lifecycle** — `n_init` hits to confirm a track, coast up to `max_age` frames on misses before deletion — survives brief occlusions/crossings without dropping IDs.
 - Appearance re-ID (DeepSORT-style) is intentionally not enabled — noted as future work, not claimed.
-
-## Honesty note
-Every number in `RESULTS.md` comes from running this code. Synthetic numbers are always labeled as synthetic — never presented as a benchmark result.
