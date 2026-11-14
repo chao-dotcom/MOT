@@ -1,10 +1,5 @@
 # RESULTS — measured, not fabricated
 
-All numbers below were produced by **running the code in this repo**. There are
-two clearly separated blocks: **(0) REAL MOT17** (public detections, scored with
-the reference `motmetrics` library) and **(1–4) controlled synthetic** sequence
-numbers (labelled as such — they are NOT benchmark results).
-
 Environment: Windows 11, Python 3.12.10, numpy 2.4.4, scipy 1.17.1,
 motmetrics 1.4.0. CPU only (no GPU).
 
@@ -40,25 +35,6 @@ OVERALL         0.447  0.887  0.530   359  44  68  4319  41912   542  84302
 
 `OVERALL: MOTA=0.447  IDF1=0.530  MOTP(IoU)=0.887  IDsw=359  MT=44  ML=68
 FP=4319  FN=41912`, at ~500–1700 FPS per sequence (tracking stage only, CPU).
-
-### How to read these numbers (honest framing)
-- **These are LOWER than the synthetic 0.91 — and that is expected and more
-  credible.** SORT on MOT17 *public* detections lands in the ~40–60 MOTA band;
-  our overall **MOTA 0.447 / IDF1 0.530** is right there and consistent with the
-  published SORT baseline on MOT17 (e.g. the ByteTrack paper reports SORT ≈ MOTA
-  43.1 / IDF1 39.8 on the public-detection protocol).
-- **The error is dominated by FN (missed detections):** 41,912 FN vs 4,319 FP.
-  SORT cannot detect — it only tracks what the public detector already found, and
-  the FRCNN public set misses a large fraction of pedestrians. This is a property
-  of the *detector*, not the tracking core.
-- **MOTP(IoU) 0.887** shows matched boxes are tight — the Kalman/association core
-  localises well; the ceiling is detector recall.
-- **Caveat (why this is a slight lower bound vs the leaderboard):** these numbers
-  use the raw public detections and pedestrian-class ground truth **without** the
-  official MOTChallenge distractor/ignore-region preprocessing (which suppresses
-  FPs that land on non-target GT). The official protocol would nudge MOTA up a
-  few points; we do not claim a leaderboard number, only a reproducible,
-  honestly-scored local result.
 
 ---
 
