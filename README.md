@@ -1,4 +1,4 @@
-# MOT Tracker — SORT-style Multi-Object Tracking, from scratch
+# MOT — SORT-style Multi-Object Tracking, from scratch
 
 ![demo](demo.gif)
 
